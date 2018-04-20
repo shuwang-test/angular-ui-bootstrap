@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1</title>
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
+    <script src="../../node_modules/angular/angular.js"></script>
+    <script src="../../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <style>
+        .calendar-container div {
+            display: inline-block;
+        }
+
+        .calendar-container input {
+            vertical-align: middle;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body ng-app="app" ng-controller="firstCtrl">
+    <div class="calendar-container">
+        <input type="text" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup.opened" datepicker-options="dateOptions"
+            ng-required="true" close-text="关闭" clear-text="清空" current-text="今天" alt-input-formats="altInputFormats" on-open-focus="false"
+        />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-primary" ng-click="open()"><i class="fa fa-calendar"></i></button>
+          </span>
+    </div>
+</body>
+<script>
+    angular.module('app', ['ui.bootstrap'])
+        .controller('firstCtrl', function ($scope) {
+            $scope.formats = ['dd-MMMM-yyyy', 'yyyy-MM-dd 00:00:00', 'dd.MM.yyyy', 'shortDate']
+            $scope.format = $scope.formats[1]
+            $scope.altInputFormats = ['M!/d!/yyyy'];
+            $scope.popup = {}
+            $scope.open = function () {
+                $scope.popup.opened = true
+            }
+        })
+</script>
+
+</html>
