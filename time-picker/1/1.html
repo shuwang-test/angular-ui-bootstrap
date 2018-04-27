@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1</title>
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
+    <!-- <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css"> -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
+    <script src="../../node_modules/angular/angular.js"></script>
+    <script src="../../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <style>
+        div.time-picker-container>div {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        div.time-picker-container>span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body ng-app="app" ng-controller="firstCtrl">
+    <div class="time-picker-container">
+        <span>上班打卡时间：</span>
+        <div uib-timepicker ng-model="attendanceRuleData.workTime" ng-change="changed()" hour-step="1" minute-step="1" second-step="1"
+            show-meridian="false" show-seconds="true" show-spinners="false"></div>
+    </div>
+    <div class="time-picker-container">
+        <span>下班打卡时间：</span>
+        <div uib-timepicker ng-model="attendanceRuleData.offTime" ng-change="changed()" hour-step="1" minute-step="1" second-step="1"
+            show-meridian="false" show-seconds="true" show-spinners="false"></div>
+    </div>
+</body>
+<script>
+    angular.module('app', ['ui.bootstrap'])
+        .controller('firstCtrl', function ($scope) {
+            $scope.mytime = new Date('2018/04/26 00:00:00');
+            $scope.changed = function () {
+                console.log($scope.mytime)
+            }
+        })
+</script>
+
+</html>

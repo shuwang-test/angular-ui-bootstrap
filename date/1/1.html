@@ -36,12 +36,18 @@
 <script>
     angular.module('app', ['ui.bootstrap'])
         .controller('firstCtrl', function ($scope) {
-            $scope.formats = ['dd-MMMM-yyyy', 'yyyy-MM-dd 00:00:00', 'dd.MM.yyyy', 'shortDate']
-            $scope.format = $scope.formats[1]
+            $scope.formats = ['dd-MMMM-yyyy', 'yyyy-MM-dd 00:00:00', 'dd.MM.yyyy', 'shortDate', 'yyyy-MM']
+            $scope.format = $scope.formats[4]
             $scope.altInputFormats = ['M!/d!/yyyy'];
             $scope.popup = {}
+            $scope.dateOptions = {
+                datepickerMode: 'month',
+                minMode: 'month'
+            }
+            $scope.dt = null
             $scope.open = function () {
                 $scope.popup.opened = true
+                console.log($scope.dt)
             }
         })
 </script>
